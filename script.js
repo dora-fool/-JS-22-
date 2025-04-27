@@ -14,11 +14,14 @@ function sumArray(arr) {
 
 ///// 2 Задание /////
 
-function findMax(arr, index = 0) {
-    if (index >= arr.length) return -Infinity;
-    const current = arr[index];
-    const maxOfRest = findMax(arr, index + 1);
-    return current > maxOfRest ? current : maxOfRest;
+function findMax(arr) {
+  if (arr.length === 0) throw new Error("Array cannot be empty");
+  if (arr.length === 1) return arr[0];
+  
+  const [first, ...rest] = arr;
+  const maxOfRest = findMax(rest);
+  
+  return first > maxOfRest ? first : maxOfRest;
   }
   
   console.log(findMax([-3, -1, -4, -2, -5]));
